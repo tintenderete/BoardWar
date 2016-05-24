@@ -8,6 +8,8 @@ namespace BoardGameApi
 {
     public class Game
     {
+		
+
         private Player[] players;
         private int currentPlayer;
         private Board board;
@@ -19,6 +21,7 @@ namespace BoardGameApi
             this.turnManager = turnManager;
             this.currentPlayer = 0;
             SetPlayers();
+
         }
 
         public void Update()
@@ -58,9 +61,11 @@ namespace BoardGameApi
 
 		public string GetCurrentPlayerName()
 		{
-			if (currentPlayer == 0) {
+			if (currentPlayer == 0) 
+			{
 				return "Blue Player";
-			} else 
+			} 
+			else 
 			{
 				return "Red Player";
 			}

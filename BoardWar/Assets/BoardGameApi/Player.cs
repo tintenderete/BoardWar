@@ -10,7 +10,7 @@ namespace BoardGameApi
     {
         public enum colors {NoPiece, Blue, Red};
 
-        private static List<Actor> inputs;
+		private static List<Action> inputs;
 
         private int color;
 
@@ -18,7 +18,7 @@ namespace BoardGameApi
         {
             if (inputs == null)
             {
-                inputs = new List<Actor>();
+				inputs = new List<Action>();
             }
 
         }
@@ -27,7 +27,7 @@ namespace BoardGameApi
         {
             if (inputs == null)
             {
-                inputs = new List<Actor>();
+				inputs = new List<Action>();
             }
 
             this.color = color;
@@ -38,22 +38,22 @@ namespace BoardGameApi
             return color;
         }
 
-        public void AddInput(Actor actor)
+		public void AddInput(Action action)
         {
-            inputs.Add(actor);
+			inputs.Add(action);
         }
 
-        public List<Actor> GetInputs()
+		public List<Action> GetInputs()
         {
             return inputs;
         }
 
-        public void SetInputs(List<Actor> newInputs)
+		public void SetInputs(List<Action> newInputs)
         {
             inputs.Clear();
-            foreach (Actor actor in newInputs)
+			foreach (Action action in newInputs)
             {
-                inputs.Add(actor);
+				inputs.Add(action);
             }
         }
 

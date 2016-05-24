@@ -1,11 +1,10 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Skills\Attack\Attack01.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GameObject\go_Curtain.cs">
     <Files>
-      <File FileName="Assets\Scripts\PieceFactory.cs" Line="6" Column="45" />
-      <File FileName="Assets\BoardGameApi\IPieceFactory.cs" Line="11" Column="48" />
-      <File FileName="Assets\Scripts\Skills\Attack\Attack01.cs" Line="35" Column="9" />
-      <File FileName="Assets\Scripts\Tests\Atttack01_Test.cs" Line="29" Column="61" />
+      <File FileName="Assets\Scripts\TurnSteps\PlayerPlay.cs" Line="23" Column="3" />
+      <File FileName="Assets\Scripts\GameObject\go_Game.cs" Line="39" Column="7" />
+      <File FileName="Assets\Scripts\GameObject\go_Curtain.cs" Line="45" Column="7" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
