@@ -12,6 +12,7 @@ namespace BoardGameApi
         int pointer;
         IPieceFactory pieceFactory;
         int[] pushCount; 
+		Piece newPiece;
 
         public BoardTableEditor()
         {
@@ -52,14 +53,16 @@ namespace BoardGameApi
             pointer = line;
         }
 
-        public void PushPiece(int numOfPieces, int piece)
+		public void PushPiece(int numOfPieces, string pieceName, int color)
         {
             Cell[,] board;
+
+			newPiece = pieceFactory.MakePiece (pieceName, color);
 
             for (int i = 0; i < numOfPieces; i++)
             {
                 board =  this.board.GetBoard();
-                board[PushCount(), pointer].SetPiece(pieceFactory.MakePiece(piece));
+				board[PushCount(), pointer].SetPiece(newPiece);
             }
         }
 
@@ -100,7 +103,7 @@ namespace BoardGameApi
             {
                 for (int h = 0; h < size.horizontal; h++)
                 {
-					boardTable[h, v] = new Cell(new Position(h, v), new Piece((int)Piece.colors.NoPiece, null));
+					boardTable[h, v] = new Cell(new Position(h, v), new NoPiece());
                 }
             }
         }

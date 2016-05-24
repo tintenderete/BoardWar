@@ -8,6 +8,6 @@ namespace BoardGameApi
 {
     public interface IPieceFactory
     {
-        Piece MakePiece(int pieceName);
+		Piece MakePiece(string pieceName, int color);
     }
 }

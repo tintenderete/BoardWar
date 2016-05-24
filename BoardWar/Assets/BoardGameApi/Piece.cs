@@ -43,7 +43,7 @@ namespace BoardGameApi
         
 		public void SetHealth(float newHealth)
 		{
-			this.health = health;
+			this.health = newHealth;
 		}
     }
 }

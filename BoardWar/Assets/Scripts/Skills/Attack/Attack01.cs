@@ -12,7 +12,6 @@ public class Attack01 : Action
 	int maxV;
 	int maxH;
 	Position piecePosition;
-	Cell[,] boardtable;
 	Piece piece;
 
 	public Attack01(Cell currentCell):base(currentCell){}
@@ -23,7 +22,6 @@ public class Attack01 : Action
 	{
 		range = (int)GetRange ();
 		piecePosition = originCell.GetBoardPosition ();
-		boardtable = board.GetBoard ();
 
 		minV = (int)piecePosition.vertical - range;
 		minH = (int)piecePosition.horizontal - range;
@@ -34,12 +32,20 @@ public class Attack01 : Action
 		{
 			for(int h = minH; h <= maxH ; h++ )
 			{
-				if (board.GetCell(h, v).IsEmpty() || board.IsPlayerPiece(board.GetCell(h, v), currentPlayer)) 
+				if (!board.IsPosOnTheBoard (new Position (h, v)))
 				{
-					continue;
 				}
-
-				destinyCells.Add (board.GetCell (h, v));
+				else if (board.GetCell (h, v).IsEmpty ()) 
+				{
+				} 
+				else if(board.IsPlayerPiece (board.GetCell (h, v), currentPlayer))
+				{
+				}
+				else 
+				{ 
+					destinyCells.Add (board.GetCell (h, v));
+				}
+				
 			}
 		}
 	}

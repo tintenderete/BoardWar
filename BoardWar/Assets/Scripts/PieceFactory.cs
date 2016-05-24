@@ -3,20 +3,26 @@ using System.Collections;
 using System.Collections.Generic;
 using BoardGameApi;
 
-public class PieceFactory : MonoBehaviour 
+public class PieceFactory : ScriptableObject , IPieceFactory
 {
-	static private string pathAux = "Stats_";
-	static private ItemContainer ic;
+	
+	 private string pathAux = "Stats_";
+	 private ItemContainer ic;
 
-	static private Piece newPiece;
-	static private List<SkillStats> listSkillStats;
-	static private SkillStats newSkillStats;
+	 private Piece newPiece;
+	 private List<SkillStats> listSkillStats;
+	 private SkillStats newSkillStats;
 
-	public static Piece MakePiece(string name, int color)
+	public Piece MakePiece(string pieceName, int color)
+	{
+		return _MakePiece(pieceName,  color);
+	}
+
+	private Piece _MakePiece(string name, int color)
 	{
 		listSkillStats = new List<SkillStats> ();
 
-		if (name == "Warrior") 
+		if (name == "Warrior" ) 
 		{	
 			ic = ItemContainer.Load (pathAux + name );
 
@@ -36,7 +42,7 @@ public class PieceFactory : MonoBehaviour
 			return newPiece;
 		}
 
-		if (name == "Archer") 
+		if (name == "Archer" ) 
 		{	
 			ic = ItemContainer.Load (pathAux + name );
 
@@ -52,6 +58,16 @@ public class PieceFactory : MonoBehaviour
 
 			newPiece = new Piece (color, listSkillStats);
 			newPiece.SetName ("Archer");
+
+			return newPiece;
+		}
+
+		if (name == "NoPiece" ) 
+		{	
+			
+			newSkillStats = new SkillStats();
+			newPiece = new NoPiece ();
+			newPiece.SetName ("NoPiece");
 
 			return newPiece;
 		}

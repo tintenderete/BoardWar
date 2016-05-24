@@ -64,7 +64,7 @@
      <Compile Include="Assets\BoardGameApi\TurnManager.cs" />
      <Compile Include="Assets\Scripts\PieceFactory.cs" />
      <Compile Include="Assets\Scripts\Skills\Attack\Attack01.cs" />
-     <Compile Include="Assets\Scripts\Tests\PieceFactory_Test.cs" />
+     <Compile Include="Assets\Scripts\Tests\Atttack01_Test.cs" />
      <Compile Include="Assets\Scripts\Xml\Item.cs" />
      <Compile Include="Assets\Scripts\Xml\ItemContainer.cs" />
      <Compile Include="Assets\Scripts\Xml\ItemLoader.cs" />
