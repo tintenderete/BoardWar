@@ -2,9 +2,13 @@
 <ItemCollection>
 	<Items>
 		<Item name = "Attack01">
-			
 			<Power>50</Power>
 			<Range>1</Range>
+			
+		</Item>
+		<Item name = "Move01">
+			<Power>0</Power>
+			<Range>3</Range>
 			
 		</Item>
 		

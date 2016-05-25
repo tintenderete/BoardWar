@@ -1,10 +1,12 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GameObject\go_Curtain.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\MakeListsManager.cs">
     <Files>
-      <File FileName="Assets\Scripts\TurnSteps\PlayerPlay.cs" Line="23" Column="3" />
-      <File FileName="Assets\Scripts\GameObject\go_Game.cs" Line="39" Column="7" />
-      <File FileName="Assets\Scripts\GameObject\go_Curtain.cs" Line="45" Column="7" />
+      <File FileName="Assets\Scripts\TurnSteps\PlayerPlay.cs" Line="39" Column="24" />
+      <File FileName="Assets\Scripts\TurnSteps\PlayAnimation.cs" Line="20" Column="87" />
+      <File FileName="Assets\Scripts\AnimationFactory.cs" Line="8" Column="44" />
+      <File FileName="Assets\Scripts\TurnSteps\Tools\LookForMovements.cs" Line="15" Column="4" />
+      <File FileName="Assets\Scripts\MakeListsManager.cs" Line="52" Column="50" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

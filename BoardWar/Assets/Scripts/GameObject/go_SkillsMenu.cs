@@ -1,39 +1,73 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using BoardGameApi;
 
 public class go_SkillsMenu : MonoBehaviour 
 {
 	
-	public Action action;
-	Game game;
+	public Action action_A;
+	public Action action_B;
+	public Action action_C;
 
-	// Use this for initialization
-	void Start () 
+	PlayerInputs inputs;
+
+
+	void Start()
 	{
-	
-	}
-	
-	// Update is called once per frame
-	void Update () 
-	{
-	
+		inputs = ScriptableObject.CreateInstance<PlayerInputs> ();
 	}
 
-
-
-	public void SetAction(Action action, Game game)
+	public void SetActions(Piece piece, List<SkillStats> skills, Game game)
 	{
-		this.action = action;
-		this.game = game;
-	}
-
-	public void SendActionAsInput()
-	{
-		if (action == null)
-			return;
 		
-		game.GetCurrentPlayer ().AddInput (action);
+		if (skills.Count > 0) 
+		{
+			this.action_A  = ActionFactory.MakeAction 
+			(
+				skills [0].name,
+				game.GetBoard ().GetCell (piece)
+			);
+			
+		}
+		if (skills.Count > 1) 
+		{
+			this.action_B = ActionFactory.MakeAction 
+			(
+				skills [1].name,
+				game.GetBoard ().GetCell (piece)
+			);
+		}
+		if (skills.Count > 2) 
+		{
+			this.action_C  = ActionFactory.MakeAction 
+			(
+				skills [2].name,
+				game.GetBoard ().GetCell (piece)
+			);
+			
+		}
+	}
+
+	public void SendAction_A()
+	{
+		if (action_A == null)
+			return;
+		inputs.SetAction (action_A);
+	}
+	public void SendAction_B()
+	{
+		if (action_B == null)
+			return;
+
+		inputs.SetAction (action_B);
+	}
+	public void SendAction_C()
+	{
+		if (action_C == null)
+			return;
+
+		inputs.SetAction (action_C);
 	}
 
 }

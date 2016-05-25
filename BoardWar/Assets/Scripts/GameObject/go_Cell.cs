@@ -5,36 +5,23 @@ using BoardGameApi;
 
 public class go_Cell : MonoBehaviour 
 {
-
-	go_SkillsMenu skillsMenu;
 	Cell cell;
-	Game game;
+	PlayerInputs inputs;
 
 	void Start()
 	{
-		skillsMenu = GameObject.Find ("SkillsMenu").GetComponent<go_SkillsMenu> ();
+		inputs = ScriptableObject.CreateInstance<PlayerInputs> ();
 	}
 
-	public void SetScript(Game game, Cell cell)
+	public void SetScript( Cell cell)
 	{
-		this.game = game;
 		this.cell = cell;
 	}
 
 
 	void OnMouseDown()
 	{
-
-		Action action = new NoAction (cell);
-		/*
-		if (go_SkillsMenu != null) 
-		{
-			game.GetCurrentPlayer ().AddInput (action);
-		}
-		*/
-		skillsMenu.SetAction(action, game);
-
-
+		inputs.SetActor_Where (cell);
 	}
 
 

@@ -21,9 +21,7 @@ public class MakeListsManager : MonoBehaviour
 
 				go = Instantiate(resource) as GameObject;
 
-				go.transform.GetChild(0).gameObject.AddComponent<go_Cell> ().SetScript(
-					game, 
-					cell);
+				go.transform.GetChild(0).gameObject.AddComponent<go_Cell> ().SetScript(cell);
 
 				go.transform.position = new Vector3 (
 					v,
@@ -50,6 +48,8 @@ public class MakeListsManager : MonoBehaviour
 						h);
 
 					PieceManager pieceManager = new PieceManager (go);
+
+					pieceManager.id = cell.GetPiece ().GetId ();
 
 					ListPieceManager.listPiece.Add (pieceManager);
 

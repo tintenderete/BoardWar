@@ -15,6 +15,12 @@ public class ActionFactory : ScriptableObject
 
 			return newAction;
 		}
+		if (action == "Move01") 
+		{
+			newAction = new Move01 (originCell);
+
+			return newAction;
+		}
 
 		return null;
 	}

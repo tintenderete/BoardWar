@@ -5,14 +5,17 @@ using BoardGameApi;
 
 public class go_Piece : MonoBehaviour 
 {
-	go_SkillsMenu skillsMenu;
 	Piece piece;
 	List<SkillStats> pieceSkills;
 	Game game;
+	PlayerInputs inputs;
+	go_Canvas canvas;
 
 	void Start()
 	{
-		skillsMenu = GameObject.Find ("SkillsMenu").GetComponent<go_SkillsMenu> ();
+		
+		inputs = ScriptableObject.CreateInstance<PlayerInputs> ();
+		canvas = GameObject.Find ("Canvas").GetComponent<go_Canvas> ();
 	}
 
 	public void SetScript(Game game, Piece piece)
@@ -24,19 +27,19 @@ public class go_Piece : MonoBehaviour
 
 	void OnMouseDown()
 	{
-		
-		Action action = ActionFactory.MakeAction (
-			pieceSkills[0].name,
-			game.GetBoard().GetCell(piece)
-		);
-		/*
-		if (go_SkillsMenu != null) 
-		{
-			game.GetCurrentPlayer ().AddInput (action);
-		}
-*/
-		skillsMenu.SetAction(action, game);
 
+		inputs.SetActor_Where (piece);
+
+		if (piece.GetColor () != game.GetCurrentPlayer ().GetColor ()) 
+		{
+			return;
+		}
+		else if (PlayerInputs.action == null) 
+		{
+			canvas.SkillsMenuOn ();
+
+			GameObject.Find ("SkillsMenu").GetComponent<go_SkillsMenu> ().SetActions (piece, pieceSkills, game);
+		}
 
 	}
 }

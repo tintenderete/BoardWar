@@ -32,6 +32,7 @@ public class go_Game : MonoBehaviour
 		turnManager.SetGame (game);
 
 		turnManager.AddStep (new PlayerPlay ());
+		turnManager.AddStep (new PlayAnimation ());
 	
 	}
 	

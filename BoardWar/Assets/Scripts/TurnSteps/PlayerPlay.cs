@@ -6,7 +6,7 @@ using BoardGameApi;
 public class PlayerPlay : IStep 
 {
 	public Action nextMovement;
-	List<Action> inputs;
+	PlayerInputs inputs;
 	Game game;
 	Board board;
 	Player currentPlayer;
@@ -14,56 +14,29 @@ public class PlayerPlay : IStep
 
 	public PlayerPlay()
 	{
-		inputs = new List<Action> ();
+		inputs = ScriptableObject.CreateInstance<PlayerInputs> ();
+
 	}
 
 	public void UpdateStep(TurnManager turnManager)
 	{
 		Curtain.Off ();
+		inputs.RightClick ();
 
 		game = turnManager.GetGame ();
 		board = game.GetBoard ();
 		currentPlayer = game.GetCurrentPlayer ();
-		inputs = currentPlayer.GetInputs ();
 
-		if (inputs.Count == 1) 
-		{
+		nextMovement = LookForMovements.Look (board, currentPlayer);
 
-			inputs [0].LookForMovements (currentPlayer, board);
 
-			if (inputs [0].destinyCells.Count == 0) 
-			{
-				currentPlayer.SetZeroInputs ();
-				Tools.ClearList (inputs);
-			}
-		} 
-		else if(inputs.Count == 2)
-		{
-			Cell cell = inputs [0].FindCellInDestiny (inputs [1].originCell);
 
-			if (cell != null) 
-			{	
-				Tools.ClearListBut (cell, inputs [0].destinyCells);
-
-				nextMovement = inputs [0];
-
-				Tools.ClearList (inputs);
-				currentPlayer.SetZeroInputs ();
-			} 
-			else 
-			{
-				Tools.ClearListBut (inputs[1], inputs);
-			}
-		}
 
 		if (nextMovement != null) 
 		{
-			nextMovement.Execute (nextMovement.destinyCells[0], board);
-			Debug.Log ("Health: " + nextMovement.destinyCells[0].GetPiece().GetHealth());
-			game.NexPlayer ();
+			turnManager.FindOneStepLike<PlayAnimation> ().nextMovement = nextMovement;
+			turnManager.NextStep<PlayAnimation>();
 			nextMovement = null;
-
-			Curtain.On (1.5f, "Next Player: " + game.GetCurrentPlayerName () + "");
 		}
 	}
 }
