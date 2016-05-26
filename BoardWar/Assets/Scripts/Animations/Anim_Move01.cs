@@ -14,9 +14,9 @@ public class Anim_Move01
 		pieceToMove = FindGameObject (action);
 
 		pieceToMove.transform.position = new Vector3 (
-			newPosition.vertical,
+			newPosition.horizontal,
 			pieceToMove.transform.position.y,
-			newPosition.horizontal
+			newPosition.vertical
 		);
 	}
 

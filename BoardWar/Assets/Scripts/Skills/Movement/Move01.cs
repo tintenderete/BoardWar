@@ -59,7 +59,7 @@ public class Move01 : Action
 
 		foreach (SkillStats skill in skills) 
 		{
-			if (skill.name == "Attack01") 
+			if (skill.name == "Move01") 
 			{
 				return skill.range;
 			}
@@ -74,7 +74,7 @@ public class Move01 : Action
 
 		foreach (SkillStats skill in skills) 
 		{
-			if (skill.name == "Attack01") 
+			if (skill.name == "Move01") 
 			{
 				return skill.power;
 			}

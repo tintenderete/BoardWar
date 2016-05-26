@@ -88,6 +88,7 @@
      <Compile Include="Assets\Scripts\TurnSteps\PlayAnimation.cs" />
      <Compile Include="Assets\Scripts\TurnSteps\PlayerPlay.cs" />
      <Compile Include="Assets\Scripts\TurnSteps\Tools\LookForMovements.cs" />
+     <Compile Include="Assets\Scripts\TurnSteps\UpdateBoardTable.cs" />
      <Compile Include="Assets\Scripts\Xml\Item.cs" />
      <Compile Include="Assets\Scripts\Xml\ItemContainer.cs" />
      <Compile Include="Assets\Scripts\Xml\ItemLoader.cs" />

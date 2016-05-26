@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using BoardGameApi;
 
 public class LookForMovements
@@ -11,13 +12,17 @@ public class LookForMovements
 	static public Action Look(Board board, Player currentPlayer)
 	{
 		
+		
 		if (PlayerInputs.actor_where != null && PlayerInputs.action != null) 
 		{
+
 			Cell cell = PlayerInputs.action.FindCellInDestiny (Tools_PlayerPlay.TakeActorAsCell (PlayerInputs.actor_where, board));
+
 
 			if (cell != null) 
 			{	
-				Tools.ClearListBut (cell, PlayerInputs.action.destinyCells);
+				PlayerInputs.action.destinyCells = new List<Cell>();
+				PlayerInputs.action.destinyCells.Add (cell);
 
 				newMovement = PlayerInputs.action;
 				inputs.CleanInputs ();

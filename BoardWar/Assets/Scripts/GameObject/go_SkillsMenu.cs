@@ -59,7 +59,6 @@ public class go_SkillsMenu : MonoBehaviour
 	{
 		if (action_B == null)
 			return;
-
 		inputs.SetAction (action_B);
 	}
 	public void SendAction_C()

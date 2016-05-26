@@ -17,12 +17,8 @@ public class PlayAnimation  : IStep
 
 		AnimationFactory.ExecuteAnimation (nextMovement);
 
-		nextMovement.Execute (nextMovement.destinyCells[0], turnManager.GetGame().GetBoard());
-		//Debug.Log ("Health: " + nextMovement.destinyCells[0].GetPiece().GetHealth());
-		turnManager.GetGame().NexPlayer ();
-		Curtain.On (1.5f, "Next Player: " + turnManager.GetGame().GetCurrentPlayerName () + "");
-
-		turnManager.NextStep<PlayerPlay> ();
+		turnManager.FindOneStepLike<UpdateBoardTable> ().nextMovement = nextMovement;
+		turnManager.NextStep<UpdateBoardTable> ();
 
 	}
 

@@ -29,9 +29,6 @@ public class PlayerPlay : IStep
 
 		nextMovement = LookForMovements.Look (board, currentPlayer);
 
-
-
-
 		if (nextMovement != null) 
 		{
 			turnManager.FindOneStepLike<PlayAnimation> ().nextMovement = nextMovement;

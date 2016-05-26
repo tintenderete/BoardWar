@@ -11,9 +11,9 @@ public class MakeListsManager : MonoBehaviour
 
 	public static void MakeLists(Game game)
 	{
-		for(int h = 0; h < game.GetBoard().GetSize().horizontal; h++)
+		for(int v = 0; v < game.GetBoard().GetSize().vertical; v++)
 		{
-			for(int v = 0; v < game.GetBoard().GetSize().vertical; v++)
+			for(int h = 0; h < game.GetBoard().GetSize().horizontal; h++)
 			{
 				cell = game.GetBoard ().GetCell (h, v);
 
@@ -24,9 +24,9 @@ public class MakeListsManager : MonoBehaviour
 				go.transform.GetChild(0).gameObject.AddComponent<go_Cell> ().SetScript(cell);
 
 				go.transform.position = new Vector3 (
-					v,
+					h,
 					go.transform.position.y, 
-					h);
+					v);
 
 				CellManager cellManager = new CellManager (go);
 
@@ -43,9 +43,9 @@ public class MakeListsManager : MonoBehaviour
 						cell.GetPiece());
 
 					go.transform.position = new Vector3 (
-						v,
+						h,
 						go.transform.position.y, 
-						h);
+						v);
 
 					PieceManager pieceManager = new PieceManager (go);
 
