@@ -10,12 +10,12 @@ public class PlayerPlay : IStep
 	Game game;
 	Board board;
 	Player currentPlayer;
-
+	Timer timer;
 
 	public PlayerPlay()
 	{
 		inputs = ScriptableObject.CreateInstance<PlayerInputs> ();
-
+		timer = new Timer (10000f);
 	}
 
 	public void UpdateStep(TurnManager turnManager)
@@ -23,17 +23,34 @@ public class PlayerPlay : IStep
 		Curtain.Off ();
 		inputs.RightClick ();
 
+		CheckTime (turnManager);
+
 		game = turnManager.GetGame ();
 		board = game.GetBoard ();
 		currentPlayer = game.GetCurrentPlayer ();
 
 		nextMovement = LookForMovements.Look (board, currentPlayer);
 
-		if (nextMovement != null) 
+		if (PlayerInputs.action != null &&
+			PlayerInputs.action.manaCost > Player.mana) 
 		{
-			turnManager.FindOneStepLike<PlayAnimation> ().nextMovement = nextMovement;
-			turnManager.NextStep<PlayAnimation>();
+			inputs.SetAction (null);
+		}
+		else if (nextMovement != null) 
+		{
+			turnManager.FindOneStepLike<UpdateScene> ().nextMovement = nextMovement;
+			turnManager.NextStep<UpdateScene>();
 			nextMovement = null;
 		}
 	}
+
+	private void CheckTime(TurnManager turnManager)
+	{
+		if (timer.TimeOff ()) 
+		{
+			turnManager.NextStep<NewTurn> ();
+			timer.ResetTime ();
+		}
+	}
+
 }

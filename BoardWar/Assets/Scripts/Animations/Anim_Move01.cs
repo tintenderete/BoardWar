@@ -2,37 +2,58 @@
 using System.Collections;
 using BoardGameApi;
 
-public class Anim_Move01 
+public class Anim_Move01 : Anim
 {
-	private static GameObject pieceToMove;
-	private static Position newPosition;
+	private  GameObject pieceToMove;
+	private  Position newPosition;
+	private NavMeshAgent nav;
+	private Animator animator;
 
-	public static void Execute(Action action )
+	public  bool Execute(Action action)
 	{
 		newPosition = action.destinyCells [0].GetBoardPosition();
 
-		pieceToMove = FindGameObject (action);
+		pieceToMove = FindOriginGameObject (action);
 
-		pieceToMove.transform.position = new Vector3 (
+		Vector3 newPos = new Vector3 (
 			newPosition.horizontal,
 			pieceToMove.transform.position.y,
 			newPosition.vertical
 		);
-	}
 
+		pieceToMove.transform.rotation = Quaternion.LookRotation (newPos - pieceToMove.transform.position);
 
-	private static GameObject FindGameObject(Action action)
-	{
-		//Debug.Log (action.originCell.GetPiece().GetId ());
-		foreach (PieceManager piece in ListPieceManager.listPiece) 
+		if (!working) 
 		{
-			//Debug.Log (piece.id); // Existe
-			if (piece.id == action.originCell.GetPiece().GetId ()) 
+			animator = pieceToMove.GetComponent<Animator> ();
+
+			animator.SetBool ("IsWalking", true);
+
+			nav = pieceToMove.GetComponent<NavMeshAgent> ();
+
+
+			nav.destination = new Vector3 (
+				newPosition.horizontal,
+				pieceToMove.transform.position.y,
+				newPosition.vertical
+			);
+
+			working = true;
+		}
+
+		if (working) 
+		{
+			if (pieceToMove.transform.position.x == newPosition.horizontal &&
+				pieceToMove.transform.position.z == newPosition.vertical) 
 			{
-				return piece.go;
+				animator.SetBool ("IsWalking", false);
+				working = false;
 			}
 		}
 
-		return null;
+		return working;
 	}
+
+
+
 }

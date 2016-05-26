@@ -32,6 +32,7 @@ public class PieceFactory : ScriptableObject , IPieceFactory
 				newSkillStats.name = item.name;
 				newSkillStats.power = item.power; 
 				newSkillStats.range = item.range; 
+				newSkillStats.cost = item.cost;
 
 				listSkillStats.Add (newSkillStats);
 			}
@@ -52,6 +53,7 @@ public class PieceFactory : ScriptableObject , IPieceFactory
 				newSkillStats.name = item.name;
 				newSkillStats.power = item.power; 
 				newSkillStats.range = item.range; 
+				newSkillStats.cost = item.cost;
 
 				listSkillStats.Add (newSkillStats);
 			}

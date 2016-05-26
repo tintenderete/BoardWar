@@ -4,12 +4,12 @@
 		<Item name = "Attack01">
 			<Power>50</Power>
 			<Range>1</Range>
-			
+			<Cost>5</Cost>
 		</Item>
 		<Item name = "Move01">
 			<Power>0</Power>
 			<Range>3</Range>
-			
+			<Cost>5</Cost>
 		</Item>
 		
 		

@@ -11,13 +11,13 @@ public class ActionFactory : ScriptableObject
 	{
 		if (action == "Attack01") 
 		{
-			newAction = new Attack01 (originCell);
+			newAction = new Attack01 ("Attack01", originCell);
 
 			return newAction;
 		}
 		if (action == "Move01") 
 		{
-			newAction = new Move01 (originCell);
+			newAction = new Move01 ("Move01", originCell);
 
 			return newAction;
 		}

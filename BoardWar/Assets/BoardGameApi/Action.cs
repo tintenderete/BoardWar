@@ -10,6 +10,10 @@ namespace BoardGameApi
     {
 		public Cell originCell;
 		public List<Cell> destinyCells;
+		public string name;
+		public int manaCost;
+		public int range;
+		public float power;
 
         public static bool IsCellInAnyOrigin(Cell cell, List<Action> actionList)
         {
@@ -57,12 +61,26 @@ namespace BoardGameApi
         {
             this.originCell = currentCell;
             this.destinyCells = new List<Cell>();
-        }
 
-        public Action(Cell currentCell, List<Cell> nextCells)
+        }
+		public Action(Cell currentCell, List<Cell> nextCells)
+		{
+			this.originCell = currentCell;
+			this.destinyCells = nextCells;
+		}
+		public Action(string name, Cell currentCell)
+		{
+			this.originCell = currentCell;
+			this.destinyCells = new List<Cell>();
+			this.name = name;
+			SetStats ();
+		}
+		public Action(string name ,Cell currentCell, List<Cell> nextCells)
         {
             this.originCell = currentCell;
             this.destinyCells = nextCells;
+			this.name = name;
+			SetStats ();
         }
 
 		public abstract void LookForMovements (Player currentPlayer, Board board);
@@ -126,8 +144,57 @@ namespace BoardGameApi
 			return null;
 		}
 
+		private void SetStats()
+		{
+			power = GetPower ();
+			range = GetRange ();
+			manaCost = GetCost ();
+		}
 
-        
+		private int GetRange()
+		{
+			List<SkillStats> skills = originCell.GetPiece ().GetSkills ();
+
+			foreach (SkillStats skill in skills) 
+			{
+				if (skill.name == name) 
+				{
+					return skill.range;
+				}
+			}
+
+			return 0;
+		}
+
+		private float GetPower()
+		{
+			List<SkillStats> skills = originCell.GetPiece ().GetSkills ();
+
+			foreach (SkillStats skill in skills) 
+			{
+				if (skill.name == name) 
+				{
+					return skill.power;
+				}
+			}
+
+			return 0f;
+		}
+
+		private int GetCost()
+		{
+			List<SkillStats> skills = originCell.GetPiece ().GetSkills ();
+
+			foreach (SkillStats skill in skills) 
+			{
+				if (skill.name == name) 
+				{
+					return skill.cost;
+				}
+			}
+
+			return 0;
+		}
 
     }
 }

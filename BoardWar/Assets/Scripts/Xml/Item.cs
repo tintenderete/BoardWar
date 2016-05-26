@@ -12,6 +12,9 @@ public class Item
 	public float power;
 
 	[XmlElement("Range")]
-	public float range;
+	public int range;
+
+	[XmlElement("Cost")]
+	public int cost;
 
 }

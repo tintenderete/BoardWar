@@ -11,6 +11,7 @@ namespace BoardGameApi
         public enum colors {NoPiece, Blue, Red};
 
 		private static List<Action> inputs;
+		public static int mana;
 
         private int color;
 
@@ -61,5 +62,7 @@ namespace BoardGameApi
         {
             inputs.Clear();
         }
+
+
     }
 }

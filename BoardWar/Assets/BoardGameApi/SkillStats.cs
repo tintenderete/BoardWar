@@ -6,8 +6,8 @@ namespace BoardGameApi
 	{
 		public string name;
 		public float power;
-		public float range;
-
+		public int range;
+		public int cost;
 
 
 	}

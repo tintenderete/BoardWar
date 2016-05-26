@@ -66,6 +66,8 @@
      <Compile Include="Assets\Scripts\ActionFactory.cs" />
      <Compile Include="Assets\Scripts\ActorManager.cs" />
      <Compile Include="Assets\Scripts\AnimationFactory.cs" />
+     <Compile Include="Assets\Scripts\Animations\Anim.cs" />
+     <Compile Include="Assets\Scripts\Animations\Anim_Attack01.cs" />
      <Compile Include="Assets\Scripts\Animations\Anim_Move01.cs" />
      <Compile Include="Assets\Scripts\CellManager.cs" />
      <Compile Include="Assets\Scripts\Curtain.cs" />
@@ -84,11 +86,12 @@
      <Compile Include="Assets\Scripts\Skills\Attack\Attack01.cs" />
      <Compile Include="Assets\Scripts\Skills\Movement\Move01.cs" />
      <Compile Include="Assets\Scripts\Skills\NoAction.cs" />
-     <Compile Include="Assets\Scripts\Tests\Atttack01_Test.cs" />
-     <Compile Include="Assets\Scripts\TurnSteps\PlayAnimation.cs" />
+     <Compile Include="Assets\Scripts\TurnSteps\DeadPieces.cs" />
+     <Compile Include="Assets\Scripts\TurnSteps\NewTurn.cs" />
      <Compile Include="Assets\Scripts\TurnSteps\PlayerPlay.cs" />
      <Compile Include="Assets\Scripts\TurnSteps\Tools\LookForMovements.cs" />
-     <Compile Include="Assets\Scripts\TurnSteps\UpdateBoardTable.cs" />
+     <Compile Include="Assets\Scripts\TurnSteps\UpdateGame.cs" />
+     <Compile Include="Assets\Scripts\TurnSteps\UpdateScene.cs" />
      <Compile Include="Assets\Scripts\Xml\Item.cs" />
      <Compile Include="Assets\Scripts\Xml\ItemContainer.cs" />
      <Compile Include="Assets\Scripts\Xml\ItemLoader.cs" />

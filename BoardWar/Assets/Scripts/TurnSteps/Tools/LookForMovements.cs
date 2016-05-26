@@ -7,7 +7,7 @@ public class LookForMovements
 {
 	private static PlayerInputs inputs = ScriptableObject.CreateInstance<PlayerInputs> ();
 
-	private static Action newMovement;
+	public static Action newMovement;
 
 	static public Action Look(Board board, Player currentPlayer)
 	{

@@ -42,4 +42,5 @@ public class go_Piece : MonoBehaviour
 		}
 
 	}
+		
 }

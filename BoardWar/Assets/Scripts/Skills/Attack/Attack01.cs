@@ -5,8 +5,7 @@ using BoardGameApi;
 
 public class Attack01 : Action
 {
-	int range;
-	float power;
+	
 	int minV;
 	int minH;
 	int maxV;
@@ -14,13 +13,19 @@ public class Attack01 : Action
 	Position piecePosition;
 	Piece piece;
 
-	public Attack01(Cell currentCell):base(currentCell){}
-	public Attack01(Cell currentCell, List<Cell> nextCells):base(currentCell, nextCells){}
+	public Attack01(string name,Cell currentCell):base(name, currentCell)
+	{
+		
+	}
+	public Attack01(string name, Cell currentCell, List<Cell> nextCells):base(name, currentCell, nextCells)
+	{
+		
+	}
 
 
 	public override void LookForMovements (Player currentPlayer, Board board)
 	{
-		range = (int)GetRange ();
+		
 		piecePosition = originCell.GetBoardPosition ();
 
 		minV = (int)piecePosition.vertical - range;
@@ -52,7 +57,7 @@ public class Attack01 : Action
 
 	public override void Execute (Cell destinyCell, Board board)
 	{
-		power = GetPower ();
+		
 
 		piece = destinyCell.GetPiece ();
 
@@ -61,35 +66,8 @@ public class Attack01 : Action
 	}
 
 
-	private float GetRange()
-	{
-		List<SkillStats> skills = originCell.GetPiece ().GetSkills ();
 
-		foreach (SkillStats skill in skills) 
-		{
-			if (skill.name == "Attack01") 
-			{
-				return skill.range;
-			}
-		}
 
-		return 0f;
-	}
-
-	private float GetPower()
-	{
-		List<SkillStats> skills = originCell.GetPiece ().GetSkills ();
-
-		foreach (SkillStats skill in skills) 
-		{
-			if (skill.name == "Attack01") 
-			{
-				return skill.power;
-			}
-		}
-
-		return 0f;
-	}
 
 
 }
