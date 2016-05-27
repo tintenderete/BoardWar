@@ -1,21 +1,34 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using BoardGameApi;
 
 public class Anim : MonoBehaviour
 {
+	private static List<Anim> animationsWorking = new List<Anim> ();
 
-	public static bool working;
 
-	public static void AnimStart()
+	public static void AnimStart(Anim animation)
 	{
-		working = true;
+		
+		if(animation != null) animationsWorking.Add (animation);
 	}
 
-	public static void AnimFinish()
+	public static void AnimFinish(Anim animation)
 	{
-		working = false;
+		
+		if(animation != null) animationsWorking.Remove (animation);
 	}
+
+	public static bool IsWorking()
+	{
+		if (animationsWorking.Count > 0 ) 
+		{
+			return true;
+		}
+		return false;
+	}
+
 
 	public static GameObject FindOriginGameObject(Action action)
 	{
@@ -46,6 +59,7 @@ public class Anim : MonoBehaviour
 
 		return null;
 	}
+
 
 
 }

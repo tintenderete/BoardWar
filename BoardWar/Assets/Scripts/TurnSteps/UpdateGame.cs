@@ -1,35 +1,89 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using BoardGameApi;
 
 public class UpdateGame : IStep 
 {
 	public Action nextMovement;
+	public List<Cell> deadPieces;
 
 	public UpdateGame()
 	{
+		deadPieces = new List<Cell>();
 	}
 
 	public void UpdateStep(TurnManager turnManager)
 	{
-		
-		nextMovement.Execute (nextMovement.destinyCells [0], turnManager.GetGame ().GetBoard ());
-
-		Player.mana = Player.mana - nextMovement.manaCost;
-
-		if (Player.mana > 0) 
+		if (Anim.IsWorking ()) 
 		{
-			turnManager.NextStep<PlayerPlay> ();
+			return;
+		}
+
+		if (nextMovement != null) 
+		{
+			nextMovement.Execute (nextMovement.destinyCells [0], turnManager.GetGame ().GetBoard ());
+			Player.mana = Player.mana - nextMovement.manaCost;
+			nextMovement = null;
+		}
+
+		if (deadPieces.Count <= 0) 
+		{
+			deadPieces = FindDeadPieces (turnManager.GetGame ().GetBoard ());
+			if (deadPieces.Count > 0) 
+			{
+				turnManager.FindOneStepLike<UpdateScene>().deadPieces = deadPieces;
+				turnManager.NextStep<UpdateScene> ();
+			}
 		} 
 		else 
 		{
+			EliminateDeadPiecesInGame (turnManager.GetGame().GetBoard().GetBoard());
+			deadPieces = new List<Cell> ();
+		}
 
-			turnManager.GetGame ().NexPlayer ();
-			turnManager.NextStep<DeadPieces> ();
+		if (nextMovement == null && deadPieces.Count == 0) 
+		{
+			if (Player.mana > 0) 
+			{
+				turnManager.NextStep<PlayerPlay> ();
+			}
+			else 
+			{
+				turnManager.GetGame ().NexPlayer ();
+				turnManager.NextStep<NewTurn> ();
+			}
 		}
 
 	}
 
+
+
+	private List<Cell> FindDeadPieces(Board board)
+	{
+		List<Cell> list = new List<Cell>();
+
+		foreach (Cell cell in board.GetBoard()) 
+		{
+			if (!cell.IsEmpty() && cell.GetPiece ().GetHealth () <= 0) 
+			{
+				list.Add (cell);
+			}
+		}
+
+		return list;
+	}
+
+	private void EliminateDeadPiecesInGame(Cell[,] boardTable)
+	{
+		foreach (Cell cell in boardTable) 
+		{
+			if (cell.GetPiece ().GetHealth () <= 0) 
+			{
+				cell.SetEmptyCell ();
+			}
+		}
+	}
 
 
 }

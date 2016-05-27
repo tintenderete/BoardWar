@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class go_Curtain : MonoBehaviour 
+public class go_Curtain : Anim 
 {
 	private bool coroutine;
 
@@ -55,8 +55,15 @@ public class go_Curtain : MonoBehaviour
 		curtain.SetActive(true);
 	}
 
+	public void CurtainOn(float minTime, string textForCurtain)
+	{
+		StartCoroutine (CurtainOn_coroutine(minTime, textForCurtain));
+	}
+
 	public IEnumerator CurtainOn_coroutine(float minTime, string textForCurtain)
 	{
+		Anim.AnimStart (this);
+
 		coroutine = true;
 		CurtainOn(textForCurtain);
 
@@ -65,11 +72,6 @@ public class go_Curtain : MonoBehaviour
 		coroutine = false;
 		CurtainOff ();
 
-
-	}
-
-	public void CurtainOn(float minTime, string textForCurtain)
-	{
-		StartCoroutine (CurtainOn_coroutine(minTime, textForCurtain));
+		Anim.AnimFinish (this);
 	}
 }

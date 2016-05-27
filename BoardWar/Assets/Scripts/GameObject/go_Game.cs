@@ -35,7 +35,6 @@ public class go_Game : MonoBehaviour
 		turnManager.AddStep (new PlayerPlay ());
 		turnManager.AddStep (new UpdateScene ());
 		turnManager.AddStep (new UpdateGame ());
-		turnManager.AddStep (new DeadPieces());
 	
 	}
 	

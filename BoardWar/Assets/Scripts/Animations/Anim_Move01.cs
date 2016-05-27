@@ -9,7 +9,7 @@ public class Anim_Move01 : Anim
 	private NavMeshAgent nav;
 	private Animator animator;
 
-	public  bool Execute(Action action)
+	public  void Execute(Action action)
 	{
 		newPosition = action.destinyCells [0].GetBoardPosition();
 
@@ -23,35 +23,42 @@ public class Anim_Move01 : Anim
 
 		pieceToMove.transform.rotation = Quaternion.LookRotation (newPos - pieceToMove.transform.position);
 
-		if (!working) 
-		{
-			animator = pieceToMove.GetComponent<Animator> ();
 
-			animator.SetBool ("IsWalking", true);
+		animator = pieceToMove.GetComponent<Animator> ();
 
-			nav = pieceToMove.GetComponent<NavMeshAgent> ();
+		animator.SetBool ("IsWalking", true);
+
+		nav = pieceToMove.GetComponent<NavMeshAgent> ();
 
 
-			nav.destination = new Vector3 (
-				newPosition.horizontal,
-				pieceToMove.transform.position.y,
-				newPosition.vertical
-			);
+		nav.destination = new Vector3 (
+			newPosition.horizontal,
+			pieceToMove.transform.position.y,
+			newPosition.vertical
+		);
 
-			working = true;
-		}
+		AnimStart (this);
 
-		if (working) 
-		{
-			if (pieceToMove.transform.position.x == newPosition.horizontal &&
-				pieceToMove.transform.position.z == newPosition.vertical) 
-			{
-				animator.SetBool ("IsWalking", false);
-				working = false;
-			}
-		}
 
-		return working;
+		StartCoroutine ("Move");
+
+
+
+
+	}
+
+	IEnumerator Move()
+	{
+		yield return new WaitWhile (() => 	pieceToMove.transform.position.x != nav.destination.x &&
+											pieceToMove.transform.position.z != nav.destination.y &&
+											pieceToMove.transform.position.z != nav.destination.z 
+									);
+
+	
+		animator.SetBool ("IsWalking", false);
+
+		AnimFinish (this);
+
 	}
 
 

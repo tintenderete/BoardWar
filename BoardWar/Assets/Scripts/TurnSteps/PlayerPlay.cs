@@ -29,12 +29,13 @@ public class PlayerPlay : IStep
 		board = game.GetBoard ();
 		currentPlayer = game.GetCurrentPlayer ();
 
+
 		nextMovement = LookForMovements.Look (board, currentPlayer);
 
 		if (PlayerInputs.action != null &&
 			PlayerInputs.action.manaCost > Player.mana) 
 		{
-			inputs.SetAction (null);
+			inputs.CleanInputs ();
 		}
 		else if (nextMovement != null) 
 		{
@@ -52,5 +53,8 @@ public class PlayerPlay : IStep
 			timer.ResetTime ();
 		}
 	}
+
+
+
 
 }

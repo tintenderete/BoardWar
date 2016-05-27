@@ -21,6 +21,12 @@ public class ActionFactory : ScriptableObject
 
 			return newAction;
 		}
+		if (action == "Dead") 
+		{
+			newAction = new Dead ("Dead", originCell);
+
+			return newAction;
+		}
 
 		return null;
 	}

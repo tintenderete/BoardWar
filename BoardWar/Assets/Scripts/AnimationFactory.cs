@@ -6,8 +6,9 @@ public class AnimationFactory
 {
 	static Anim_Attack01 attack01;
 	static Anim_Move01 movek01;
+	static Anim_Dead dead;
 
-	public static bool ExecuteAnimation(Action action)
+	public static void ExecuteAnimation(Action action)
 	{
 		if (action is Move01) 
 		{
@@ -17,7 +18,7 @@ public class AnimationFactory
 				movek01 =  go.AddComponent<Anim_Move01> ();
 			}
 
-			return movek01.Execute (action);
+			movek01.Execute (action);
 		}
 
 		if (action is Attack01) 
@@ -28,10 +29,20 @@ public class AnimationFactory
 				attack01 =  go.AddComponent<Anim_Attack01> ();
 			}
 
-			return attack01.Execute (action);
+			attack01.Execute (action);
+		}
+		if (action is Dead) 
+		{
+			if (dead == null) 
+			{
+				GameObject go = new GameObject ();
+				dead =  go.AddComponent<Anim_Dead> ();
+			}
+
+			dead.Execute (action);
 		}
 
-		return false;
+
 	}
 
 }

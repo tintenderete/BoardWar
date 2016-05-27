@@ -11,27 +11,22 @@ public class Anim_Attack01 : Anim
 	private  Action action;
 
 
-	public bool Execute(Action _action )
+	public void Execute(Action _action )
 	{
 		//newPosition = action.destinyCells [0].GetBoardPosition();
 
 		action = _action;
 
-		if (!working) 
-		{
-			AnimStart ();
-			StartCoroutine ("Attack");
-		}
+
+		AnimStart (this);
+		StartCoroutine ("Attack");
 
 
-		return working;
+
 	}
 
 	IEnumerator Attack()
 	{
-		Debug.Log ("Start");
-
-
 		attacker = FindOriginGameObject (action);
 		receiver = FindDestinyGameObject (action);
 
@@ -42,11 +37,9 @@ public class Anim_Attack01 : Anim
 		anim.SetTrigger ("Attack01");
 
 		yield return new WaitForSeconds (2);
-		AnimFinish ();
-		Debug.Log ("End");
 
-		//StopCoroutine ("Attack");
-		//yield return null;
+		AnimFinish (this);
+
 
 
 	}

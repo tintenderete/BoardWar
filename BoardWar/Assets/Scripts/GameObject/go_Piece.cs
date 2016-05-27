@@ -27,6 +27,8 @@ public class go_Piece : MonoBehaviour
 
 	void OnMouseDown()
 	{
+		if (Anim.IsWorking ())
+			return;
 
 		inputs.SetActor_Where (piece);
 

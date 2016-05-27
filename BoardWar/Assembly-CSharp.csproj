@@ -64,10 +64,15 @@
      <Compile Include="Assets\BoardGameApi\Tools_PlayerPlay.cs" />
      <Compile Include="Assets\BoardGameApi\TurnManager.cs" />
      <Compile Include="Assets\Scripts\ActionFactory.cs" />
+     <Compile Include="Assets\Scripts\Actions\Attack\Attack01.cs" />
+     <Compile Include="Assets\Scripts\Actions\Dead.cs" />
+     <Compile Include="Assets\Scripts\Actions\Movement\Move01.cs" />
+     <Compile Include="Assets\Scripts\Actions\NoAction.cs" />
      <Compile Include="Assets\Scripts\ActorManager.cs" />
      <Compile Include="Assets\Scripts\AnimationFactory.cs" />
      <Compile Include="Assets\Scripts\Animations\Anim.cs" />
      <Compile Include="Assets\Scripts\Animations\Anim_Attack01.cs" />
+     <Compile Include="Assets\Scripts\Animations\Anim_Dead.cs" />
      <Compile Include="Assets\Scripts\Animations\Anim_Move01.cs" />
      <Compile Include="Assets\Scripts\CellManager.cs" />
      <Compile Include="Assets\Scripts\Curtain.cs" />
@@ -83,10 +88,6 @@
      <Compile Include="Assets\Scripts\PieceFactory.cs" />
      <Compile Include="Assets\Scripts\PieceManager.cs" />
      <Compile Include="Assets\Scripts\PlayerInputs.cs" />
-     <Compile Include="Assets\Scripts\Skills\Attack\Attack01.cs" />
-     <Compile Include="Assets\Scripts\Skills\Movement\Move01.cs" />
-     <Compile Include="Assets\Scripts\Skills\NoAction.cs" />
-     <Compile Include="Assets\Scripts\TurnSteps\DeadPieces.cs" />
      <Compile Include="Assets\Scripts\TurnSteps\NewTurn.cs" />
      <Compile Include="Assets\Scripts\TurnSteps\PlayerPlay.cs" />
      <Compile Include="Assets\Scripts\TurnSteps\Tools\LookForMovements.cs" />

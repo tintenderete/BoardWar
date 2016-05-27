@@ -21,6 +21,9 @@ public class go_Cell : MonoBehaviour
 
 	void OnMouseDown()
 	{
+		if (Anim.IsWorking ())
+			return;
+
 		inputs.SetActor_Where (cell);
 	}
 
