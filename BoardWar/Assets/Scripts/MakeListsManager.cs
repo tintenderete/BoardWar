@@ -46,10 +46,12 @@ public class MakeListsManager : MonoBehaviour
 						h,
 						go.transform.position.y, 
 						v);
+					
 
 					PieceManager pieceManager = new PieceManager (go);
 
 					pieceManager.id = cell.GetPiece ().GetId ();
+					pieceManager.SetStateBar (go.transform.FindChild("StateBar").GetComponent<go_StateBar>());
 
 					ListPieceManager.listPiece.Add (pieceManager);
 

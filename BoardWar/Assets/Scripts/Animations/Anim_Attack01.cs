@@ -5,8 +5,8 @@ using UnityEditor.Animations;
 
 public class Anim_Attack01 : Anim
 {
-	private  GameObject attacker;
-	private  GameObject receiver;
+	private  PieceManager attacker;
+	private  PieceManager receiver;
 	private  Animator anim;
 	private  Action action;
 
@@ -27,16 +27,18 @@ public class Anim_Attack01 : Anim
 
 	IEnumerator Attack()
 	{
-		attacker = FindOriginGameObject (action);
-		receiver = FindDestinyGameObject (action);
+		attacker = FindOriginPieceManager (action);
+		receiver = FindDestinyPieceManager (action);
 
 		attacker.transform.rotation = Quaternion.LookRotation (receiver.transform.position - attacker.transform.position);
 
-		anim = attacker.GetComponent<Animator> ();
+		anim = attacker.go.GetComponent<Animator> ();
 
 		anim.SetTrigger ("Attack01");
 
 		yield return new WaitForSeconds (2);
+
+		receiver.stateBar.SetCurrentHealth (action);
 
 		AnimFinish (this);
 

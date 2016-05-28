@@ -61,7 +61,7 @@ public class Attack01 : Action
 
 		piece = destinyCell.GetPiece ();
 
-		piece.SetHealth (piece.GetHealth() - power);
+		piece.SetCurrentHealth (piece.GetCurrentHealth() - power);
 
 	}
 

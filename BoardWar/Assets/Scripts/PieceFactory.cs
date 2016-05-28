@@ -6,12 +6,13 @@ using BoardGameApi;
 public class PieceFactory : ScriptableObject , IPieceFactory
 {
 	
-	 private string pathAux = "Stats_";
-	 private ItemContainer ic;
+	private string pathAux = "Stats_";
+	private ItemContainer ic;
 
-	 private Piece newPiece;
-	 private List<SkillStats> listSkillStats;
-	 private SkillStats newSkillStats;
+	private Piece newPiece;
+	private float newHealth;	
+	private List<SkillStats> listSkillStats;
+	private SkillStats newSkillStats;
 
 	public Piece MakePiece(string pieceName, int color)
 	{
@@ -28,6 +29,7 @@ public class PieceFactory : ScriptableObject , IPieceFactory
 
 			foreach (Item item in ic.items)
 			{
+				newHealth = GetHealth (item);
 				newSkillStats = new SkillStats();
 				newSkillStats.name = item.name;
 				newSkillStats.power = item.power; 
@@ -39,7 +41,8 @@ public class PieceFactory : ScriptableObject , IPieceFactory
 
 			newPiece = new Piece (color, listSkillStats);
 			newPiece.SetName ("Warrior");
-
+			newPiece.SetMaxHealth (newHealth);
+			newPiece.SetCurrentHealth (newHealth);
 			return newPiece;
 		}
 
@@ -49,6 +52,7 @@ public class PieceFactory : ScriptableObject , IPieceFactory
 
 			foreach (Item item in ic.items)
 			{
+				newHealth = GetHealth (item);
 				newSkillStats = new SkillStats();
 				newSkillStats.name = item.name;
 				newSkillStats.power = item.power; 
@@ -60,6 +64,8 @@ public class PieceFactory : ScriptableObject , IPieceFactory
 
 			newPiece = new Piece (color, listSkillStats);
 			newPiece.SetName ("Archer");
+			newPiece.SetMaxHealth (newHealth);
+			newPiece.SetCurrentHealth (newHealth);
 
 			return newPiece;
 		}
@@ -75,5 +81,14 @@ public class PieceFactory : ScriptableObject , IPieceFactory
 		}
 
 		return null;
+	}
+
+	private float GetHealth(Item item)
+	{
+		if (item.name == "Health") 
+		{
+			return item.power;
+		}
+		return 0f;
 	}
 }

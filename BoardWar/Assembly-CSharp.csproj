@@ -82,6 +82,7 @@
      <Compile Include="Assets\Scripts\GameObject\go_Game.cs" />
      <Compile Include="Assets\Scripts\GameObject\go_Piece.cs" />
      <Compile Include="Assets\Scripts\GameObject\go_SkillsMenu.cs" />
+     <Compile Include="Assets\Scripts\GameObject\go_StateBar.cs" />
      <Compile Include="Assets\Scripts\ListCellManager.cs" />
      <Compile Include="Assets\Scripts\ListPieceManager.cs" />
      <Compile Include="Assets\Scripts\MakeListsManager.cs" />

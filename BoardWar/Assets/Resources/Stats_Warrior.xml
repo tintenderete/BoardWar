@@ -11,7 +11,14 @@
 			<Range>3</Range>
 			<Cost>5</Cost>
 		</Item>
-		
+		<Item name = "">
+			<Power>0</Power>
+			<Range>0</Range>
+			<Cost>0</Cost>
+		</Item>
+		<Item name = "Health">
+			<Power>100</Power>
+		</Item>
 		
 	</Items>
 </ItemCollection>

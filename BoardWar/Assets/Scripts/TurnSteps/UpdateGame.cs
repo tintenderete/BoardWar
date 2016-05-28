@@ -65,7 +65,7 @@ public class UpdateGame : IStep
 
 		foreach (Cell cell in board.GetBoard()) 
 		{
-			if (!cell.IsEmpty() && cell.GetPiece ().GetHealth () <= 0) 
+			if (!cell.IsEmpty() && cell.GetPiece ().GetCurrentHealth () <= 0) 
 			{
 				list.Add (cell);
 			}
@@ -78,7 +78,7 @@ public class UpdateGame : IStep
 	{
 		foreach (Cell cell in boardTable) 
 		{
-			if (cell.GetPiece ().GetHealth () <= 0) 
+			if (cell.GetPiece ().GetCurrentHealth () <= 0) 
 			{
 				cell.SetEmptyCell ();
 			}

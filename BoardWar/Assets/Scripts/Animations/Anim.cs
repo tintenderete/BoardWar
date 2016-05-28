@@ -30,7 +30,7 @@ public class Anim : MonoBehaviour
 	}
 
 
-	public static GameObject FindOriginGameObject(Action action)
+	public static PieceManager FindOriginPieceManager(Action action)
 	{
 
 		foreach (PieceManager piece in ListPieceManager.listPiece) 
@@ -38,14 +38,14 @@ public class Anim : MonoBehaviour
 
 			if (piece.id == action.originCell.GetPiece().GetId ()) 
 			{
-				return piece.go;
+				return piece;
 			}
 		}
 
 		return null;
 	}
 
-	public static GameObject FindDestinyGameObject(Action action)
+	public static PieceManager FindDestinyPieceManager(Action action)
 	{
 
 		foreach (PieceManager piece in ListPieceManager.listPiece) 
@@ -53,7 +53,7 @@ public class Anim : MonoBehaviour
 
 			if (piece.id == action.destinyCells[0].GetPiece().GetId ()) 
 			{
-				return piece.go;
+				return piece;
 			}
 		}
 

@@ -11,7 +11,8 @@ namespace BoardGameApi
         public enum colors {NoPiece, Blue, Red};
         protected int color;
 		protected List<SkillStats> skills;
-		private float health;
+		private float maxHealth;
+		private float currentHealth;
 
         public Piece(): base()
         {
@@ -23,7 +24,6 @@ namespace BoardGameApi
             this.color = color;
 			this.skills = skills;
             this.type = (int)Actor.types.Piece;
-			this.health = 100;
         }
 
         public int GetColor()
@@ -36,14 +36,21 @@ namespace BoardGameApi
 			return skills;
         }
 
-		public float GetHealth()
+		public float GetMaxHealth()
 		{
-			return health;
+			return maxHealth;
 		}
-        
-		public void SetHealth(float newHealth)
+		public float GetCurrentHealth()
 		{
-			this.health = newHealth;
+			return currentHealth;
+		}
+		public void SetMaxHealth(float newHealth)
+		{
+			this.maxHealth = newHealth;
+		}
+		public void SetCurrentHealth(float newHealth)
+		{
+			this.currentHealth = newHealth;
 		}
     }
 }

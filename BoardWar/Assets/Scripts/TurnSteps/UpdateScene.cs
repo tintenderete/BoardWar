@@ -6,6 +6,7 @@ using BoardGameApi;
 public class UpdateScene  : IStep 
 {
 	public Action nextMovement;
+	//FUturo refactoring : cuado cree daño en area, cambiar DeadAnimation a una anim_dead que reciva los muerto en destiny cell.
 	public List<Cell> deadPieces;
 	go_Canvas canvas;
 
