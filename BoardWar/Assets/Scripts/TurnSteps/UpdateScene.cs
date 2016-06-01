@@ -25,8 +25,10 @@ public class UpdateScene  : IStep
 		{
 			AnimationFactory.ExecuteAnimation (nextMovement); 
 			turnManager.FindOneStepLike<UpdateGame> ().nextMovement = nextMovement;
+			canvas.SetManaText (Player.mana - nextMovement.manaCost);
 			nextMovement = null;
 			turnManager.NextStep<UpdateGame> ();
+			LookForMovements.UnMarkCells ();
 		}
 
 		if (deadPieces.Count != 0)

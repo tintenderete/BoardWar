@@ -29,12 +29,18 @@ public class UpdateGame : IStep
 
 		if (deadPieces.Count <= 0) 
 		{
-			deadPieces = FindDeadPieces (turnManager.GetGame ().GetBoard ());
-			if (deadPieces.Count > 0) 
+			deadPieces = FindDeadPieces (turnManager.GetGame ().GetBoard (), turnManager);
+			if (deadPieces == null)
+			{
+				turnManager.NextStep<Winner> ();
+				return;
+			}
+			else if (deadPieces.Count > 0) 
 			{
 				turnManager.FindOneStepLike<UpdateScene>().deadPieces = deadPieces;
 				turnManager.NextStep<UpdateScene> ();
-			}
+			} 
+
 		} 
 		else 
 		{
@@ -59,7 +65,7 @@ public class UpdateGame : IStep
 
 
 
-	private List<Cell> FindDeadPieces(Board board)
+	private List<Cell> FindDeadPieces(Board board, TurnManager turnManager)
 	{
 		List<Cell> list = new List<Cell>();
 
@@ -67,6 +73,11 @@ public class UpdateGame : IStep
 		{
 			if (!cell.IsEmpty() && cell.GetPiece ().GetCurrentHealth () <= 0) 
 			{
+				if (cell.GetPiece ().GetName () == "Boss") 
+				{
+					return null;
+				}
+
 				list.Add (cell);
 			}
 		}

@@ -37,6 +37,7 @@ public class PlayerInputs: ScriptableObject
 		{
 			CleanInputs ();
 			GameObject.Find ("Canvas").GetComponent<go_Canvas> ().SkillsMenuOff();
+			LookForMovements.UnMarkCells ();
 		}
 	}
 

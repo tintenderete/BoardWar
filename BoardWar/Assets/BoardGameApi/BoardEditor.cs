@@ -57,10 +57,9 @@ namespace BoardGameApi
         {
             Cell[,] board;
 
-			newPiece = pieceFactory.MakePiece (pieceName, color);
-
             for (int i = 0; i < numOfPieces; i++)
             {
+				newPiece = pieceFactory.MakePiece (pieceName, color);
                 board =  this.board.GetBoard();
 				board[PushCount(), pointer].SetPiece(newPiece);
             }

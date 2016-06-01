@@ -2,12 +2,23 @@
 <ItemCollection>
 	<Items>
 		<Item name = "Attack01">
-			
 			<Power>50</Power>
-			<Range>4</Range>
-			
+			<Range>3</Range>
+			<Cost>5</Cost>
 		</Item>
-		
+		<Item name = "Move01">
+			<Power>0</Power>
+			<Range>3</Range>
+			<Cost>5</Cost>
+		</Item>
+		<Item name = "Attack02">
+			<Power>150</Power>
+			<Range>2</Range>
+			<Cost>10</Cost>
+		</Item>
+		<Item name = "Health">
+			<Power>70</Power>
+		</Item>
 		
 	</Items>
 </ItemCollection>

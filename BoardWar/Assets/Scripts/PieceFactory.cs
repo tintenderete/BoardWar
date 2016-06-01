@@ -69,6 +69,29 @@ public class PieceFactory : ScriptableObject , IPieceFactory
 
 			return newPiece;
 		}
+		if (name == "Boss" ) 
+		{	
+			ic = ItemContainer.Load (pathAux + name );
+
+			foreach (Item item in ic.items)
+			{
+				newHealth = GetHealth (item);
+				newSkillStats = new SkillStats();
+				newSkillStats.name = item.name;
+				newSkillStats.power = item.power; 
+				newSkillStats.range = item.range; 
+				newSkillStats.cost = item.cost;
+
+				listSkillStats.Add (newSkillStats);
+			}
+
+			newPiece = new Piece (color, listSkillStats);
+			newPiece.SetName ("Boss");
+			newPiece.SetMaxHealth (newHealth);
+			newPiece.SetCurrentHealth (newHealth);
+
+			return newPiece;
+		}
 
 		if (name == "NoPiece" ) 
 		{	

@@ -8,6 +8,7 @@ public class MakeListsManager : MonoBehaviour
 	private static Object resource;
 	private static GameObject go;
 	private static Cell cell;
+	private static GameObject piecesAndCells = GameObject.Find("Piece&Cells");
 
 	public static void MakeLists(Game game)
 	{
@@ -27,8 +28,11 @@ public class MakeListsManager : MonoBehaviour
 					h,
 					go.transform.position.y, 
 					v);
+				
+				go.transform.SetParent (piecesAndCells.transform);
 
 				CellManager cellManager = new CellManager (go);
+				cellManager.markedCell = go.transform.Find ("Marked").gameObject;
 
 				ListCellManager.listCell.Add (cellManager);
 
@@ -47,11 +51,16 @@ public class MakeListsManager : MonoBehaviour
 						go.transform.position.y, 
 						v);
 					
+					if (cell.GetPiece ().GetColor () == (int)Piece.colors.Red) 
+					{
+						go.transform.Rotate (new Vector3(0, 180, 0));
+					}
+
+					go.transform.SetParent (piecesAndCells.transform);
 
 					PieceManager pieceManager = new PieceManager (go);
-
 					pieceManager.id = cell.GetPiece ().GetId ();
-					pieceManager.SetStateBar (go.transform.FindChild("StateBar").GetComponent<go_StateBar>());
+					pieceManager.SetStateBar (go.transform.GetChild(1).GetComponent<go_StateBar>());
 
 					ListPieceManager.listPiece.Add (pieceManager);
 

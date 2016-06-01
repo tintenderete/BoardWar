@@ -1,0 +1,29 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{7828E971-98C1-9792-1741-4B887C5152D1}") = "TBS framework", "Assembly-CSharp.csproj", "{6FF3BC60-B3EE-B4AE-4B13-FB4FAA4BA24B}"
+EndProject
+Project("{7828E971-98C1-9792-1741-4B887C5152D1}") = "TBS framework", "Assembly-CSharp-Editor.csproj", "{F3459D8F-CE73-D87C-DC41-1B665AB2EE9B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6FF3BC60-B3EE-B4AE-4B13-FB4FAA4BA24B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FF3BC60-B3EE-B4AE-4B13-FB4FAA4BA24B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FF3BC60-B3EE-B4AE-4B13-FB4FAA4BA24B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FF3BC60-B3EE-B4AE-4B13-FB4FAA4BA24B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3459D8F-CE73-D87C-DC41-1B665AB2EE9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3459D8F-CE73-D87C-DC41-1B665AB2EE9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3459D8F-CE73-D87C-DC41-1B665AB2EE9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3459D8F-CE73-D87C-DC41-1B665AB2EE9B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal

@@ -65,6 +65,7 @@
      <Compile Include="Assets\BoardGameApi\TurnManager.cs" />
      <Compile Include="Assets\Scripts\ActionFactory.cs" />
      <Compile Include="Assets\Scripts\Actions\Attack\Attack01.cs" />
+     <Compile Include="Assets\Scripts\Actions\Attack\Attack02.cs" />
      <Compile Include="Assets\Scripts\Actions\Dead.cs" />
      <Compile Include="Assets\Scripts\Actions\Movement\Move01.cs" />
      <Compile Include="Assets\Scripts\Actions\NoAction.cs" />
@@ -80,7 +81,9 @@
      <Compile Include="Assets\Scripts\GameObject\go_Cell.cs" />
      <Compile Include="Assets\Scripts\GameObject\go_Curtain.cs" />
      <Compile Include="Assets\Scripts\GameObject\go_Game.cs" />
+     <Compile Include="Assets\Scripts\GameObject\go_Menu.cs" />
      <Compile Include="Assets\Scripts\GameObject\go_Piece.cs" />
+     <Compile Include="Assets\Scripts\GameObject\go_PieceStats.cs" />
      <Compile Include="Assets\Scripts\GameObject\go_SkillsMenu.cs" />
      <Compile Include="Assets\Scripts\GameObject\go_StateBar.cs" />
      <Compile Include="Assets\Scripts\ListCellManager.cs" />
@@ -89,14 +92,17 @@
      <Compile Include="Assets\Scripts\PieceFactory.cs" />
      <Compile Include="Assets\Scripts\PieceManager.cs" />
      <Compile Include="Assets\Scripts\PlayerInputs.cs" />
+     <Compile Include="Assets\Scripts\TurnSteps\Menu.cs" />
      <Compile Include="Assets\Scripts\TurnSteps\NewTurn.cs" />
      <Compile Include="Assets\Scripts\TurnSteps\PlayerPlay.cs" />
      <Compile Include="Assets\Scripts\TurnSteps\Tools\LookForMovements.cs" />
      <Compile Include="Assets\Scripts\TurnSteps\UpdateGame.cs" />
      <Compile Include="Assets\Scripts\TurnSteps\UpdateScene.cs" />
+     <Compile Include="Assets\Scripts\TurnSteps\Winner.cs" />
      <Compile Include="Assets\Scripts\Xml\Item.cs" />
      <Compile Include="Assets\Scripts\Xml\ItemContainer.cs" />
      <Compile Include="Assets\Scripts\Xml\ItemLoader.cs" />
+     <None Include="Assets\Resources\Stats_Boss.xml" />
      <None Include="Assets\Resources\Stats_Warrior.xml" />
      <None Include="Assets\Resources\Stats_Archer.xml" />
  <Reference Include="UnityEngine.UI">

@@ -3,10 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using BoardGameApi;
 
-public class LookForMovements
+public class LookForMovements: MonoBehaviour
 {
 	private static PlayerInputs inputs = ScriptableObject.CreateInstance<PlayerInputs> ();
-
 	public static Action newMovement;
 
 	static public Action Look(Board board, Player currentPlayer)
@@ -44,6 +43,10 @@ public class LookForMovements
 			{
 				inputs.CleanInputs ();
 				return null;
+			} 
+			else 
+			{
+				MarkCells (PlayerInputs.action);
 			}
 
 			return null;
@@ -51,4 +54,23 @@ public class LookForMovements
 
 		return null;
 	}
+
+
+	private static void MarkCells(Action action)
+	{
+		foreach (Cell cell in action.destinyCells) 
+		{
+			ListCellManager.FindCell (cell).SetStateMarkedCell (true);
+		}
+	}
+
+	public static void UnMarkCells()
+	{
+		foreach (CellManager cellM in ListCellManager.listCell) 
+		{
+			cellM.SetStateMarkedCell (false);
+		}
+	}
+
+
 }

@@ -48,7 +48,7 @@ public class go_StateBar : MonoBehaviour
 			currentHealth.transform.localScale = new Vector3( 
 				0,
 				currentHealth.transform.localScale.y,
-				currentHealth.transform.localScale.z
+				90
 			);
 		}
 	}
@@ -75,12 +75,12 @@ public class go_StateBar : MonoBehaviour
 	private void LookCamera()
 	{
 		Vector3 direction = new Vector3 (
-								Camera.main.gameObject.transform.position.x - gameObject.transform.position.x,
-			                    Camera.main.gameObject.transform.position.y - gameObject.transform.position.y,
-			                    Camera.main.gameObject.transform.position.z - gameObject.transform.position.z
+								-1,
+			                    0,
+			                    0
 		);
 
 		gameObject.transform.rotation = Quaternion.LookRotation (direction);
-
+		
 	}
 }

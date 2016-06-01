@@ -49,12 +49,14 @@ public class Anim_Move01 : Anim
 
 	IEnumerator Move()
 	{
-		yield return new WaitWhile (() => 	pieceToMove.go.transform.position.x != nav.destination.x &&
-											pieceToMove.go.transform.position.z != nav.destination.y &&
-											pieceToMove.go.transform.position.z != nav.destination.z 
+		
+		yield return new WaitUntil (() => 	pieceToMove.go.transform.position.x == nav.destination.x &&
+											pieceToMove.go.transform.position.y == nav.destination.y &&
+											pieceToMove.go.transform.position.z == nav.destination.z 
 									);
 
-	
+
+
 		animator.SetBool ("IsWalking", false);
 
 		AnimFinish (this);

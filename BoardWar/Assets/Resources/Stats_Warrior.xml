@@ -8,16 +8,16 @@
 		</Item>
 		<Item name = "Move01">
 			<Power>0</Power>
-			<Range>3</Range>
+			<Range>1</Range>
 			<Cost>5</Cost>
 		</Item>
-		<Item name = "">
-			<Power>0</Power>
-			<Range>0</Range>
-			<Cost>0</Cost>
+		<Item name = "Attack02">
+			<Power>90</Power>
+			<Range>1</Range>
+			<Cost>10</Cost>
 		</Item>
 		<Item name = "Health">
-			<Power>100</Power>
+			<Power>150</Power>
 		</Item>
 		
 	</Items>
