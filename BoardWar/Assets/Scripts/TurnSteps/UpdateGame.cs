@@ -30,7 +30,7 @@ public class UpdateGame : IStep
 		if (deadPieces.Count <= 0) 
 		{
 			deadPieces = FindDeadPieces (turnManager.GetGame ().GetBoard (), turnManager);
-			if (deadPieces == null)
+			if (IsBossDead(deadPieces))
 			{
 				turnManager.NextStep<Winner> ();
 				return;
@@ -63,6 +63,15 @@ public class UpdateGame : IStep
 
 	}
 
+	private bool IsBossDead(List<Cell> deadPieces)
+	{
+		if (deadPieces == null) 
+		{
+			return true;
+		}
+
+		return false;
+	}
 
 
 	private List<Cell> FindDeadPieces(Board board, TurnManager turnManager)

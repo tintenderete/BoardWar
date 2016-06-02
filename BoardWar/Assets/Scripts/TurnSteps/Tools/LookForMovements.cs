@@ -46,6 +46,7 @@ public class LookForMovements: MonoBehaviour
 			} 
 			else 
 			{
+				UnMarkCells ();
 				MarkCells (PlayerInputs.action);
 			}
 
