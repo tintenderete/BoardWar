@@ -54,8 +54,8 @@ public class go_Game : MonoBehaviour
 		editor.SetPointerInLine (1);
 		editor.PushPiece (1, "Archer", (int)Player.colors.Red);
 		editor.PushPiece (1, "Boss", (int)Player.colors.Red);
-		*/
 
+*/
 		turnManager = new TurnManager ();
 
 		game = new Game (editor.GetBoard(), turnManager);
