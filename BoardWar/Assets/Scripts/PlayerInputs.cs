@@ -9,6 +9,7 @@ public class PlayerInputs: ScriptableObject
 	public static Action action = null;
 	public static Actor actor_where = null;
 
+
 	public PlayerInputs()
 	{
 		
@@ -38,6 +39,7 @@ public class PlayerInputs: ScriptableObject
 			CleanInputs ();
 			GameObject.Find ("Canvas").GetComponent<go_Canvas> ().SkillsMenuOff();
 			LookForMovements.UnMarkCells ();
+			GameObject.Find ("PlayerInterfaceTools").transform.FindChild ("PieceMarked").gameObject.SetActive (false);
 		}
 	}
 

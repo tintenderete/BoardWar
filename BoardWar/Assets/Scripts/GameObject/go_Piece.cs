@@ -11,14 +11,16 @@ public class go_Piece : MonoBehaviour
 	Game game;
 	PlayerInputs inputs;
 	go_Canvas canvas;
-	GameObject ps_pieceSelection;
+	GameObject mouseOverPiece_tool;
+	GameObject pieceMarked_tool;
 
 	void Start()
 	{
 		pieceStats = GameObject.Find ("PieceStats").GetComponent<go_PieceStats>();
 		inputs = ScriptableObject.CreateInstance<PlayerInputs> ();
 		canvas = GameObject.Find ("Canvas").GetComponent<go_Canvas> ();
-		ps_pieceSelection = GameObject.Find ("PlayerInterfaceTools").transform.FindChild ("MouseOverPiece").gameObject;
+		mouseOverPiece_tool = GameObject.Find ("PlayerInterfaceTools").transform.FindChild ("MouseOverPiece").gameObject;
+		pieceMarked_tool = GameObject.Find ("PlayerInterfaceTools").transform.FindChild ("PieceMarked").gameObject;
 	}
 
 	public void SetScript(Game game, Piece piece)
@@ -36,17 +38,17 @@ public class go_Piece : MonoBehaviour
 			pieceStats.SetActive (true);
 		//}
 
-		ps_pieceSelection.transform.position = gameObject.transform.position;
-		ps_pieceSelection.SetActive (true);
+		mouseOverPiece_tool.transform.position = gameObject.transform.position;
+		mouseOverPiece_tool.SetActive (true);
 
 	}
 	void OnMouseExit()
 	{
 		pieceStats.SetActive (false);
 
-		if(ps_pieceSelection.activeSelf)
+		if(mouseOverPiece_tool.activeSelf)
 		{
-			ps_pieceSelection.SetActive (false);
+			mouseOverPiece_tool.SetActive (false);
 		}
 	}
 
@@ -66,6 +68,9 @@ public class go_Piece : MonoBehaviour
 			canvas.SkillsMenuOn ();
 
 			GameObject.Find ("SkillsMenu").GetComponent<go_SkillsMenu> ().SetActions (piece, pieceSkills, game);
+
+			pieceMarked_tool.transform.position = gameObject.transform.position;
+			pieceMarked_tool.SetActive (true);
 		}
 
 	}

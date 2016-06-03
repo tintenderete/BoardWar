@@ -39,6 +39,7 @@ public class PlayerPlay : IStep
 		}
 		else if (nextMovement != null) 
 		{
+			GameObject.Find ("PlayerInterfaceTools").transform.FindChild ("PieceMarked").gameObject.SetActive (false);
 			turnManager.FindOneStepLike<UpdateScene> ().nextMovement = nextMovement;
 			turnManager.NextStep<UpdateScene>();
 			nextMovement = null;
